@@ -16,6 +16,12 @@
 - [ ] Read every page on your phone. The three Oracle and Cerner case studies were written from resume notes: each has a comment in its front matter saying what to add. Change anything that isn't how you'd say it.
 - [ ] `npm run pdf`, open all three PDFs, check each is one page and reads right.
 - [ ] No phone number, sales numbers, or order counts anywhere in src/.
+- [ ] Cafe blanks only you can fill (FACTS.md marks them [fill] or check). Each one, once written down, can become a resume bullet or a line in the-cafe.md:
+  - Local outreach: who you reached out to (businesses, catering leads), how, and what came of it.
+  - Catering work beyond the guide and form: quotes, calls, deliveries, setups.
+  - Facebook Story views: a real week of numbers from Meta Business Suite before "hundreds a day" goes anywhere public (today it prints only on the PDFs you send).
+  - Your handover plan, for "who keeps it running when you go?"
+- [ ] Security+ (SY0-801) shows as "in progress, exam expected December 2026" on the home page and every resume (your call, 2026-11-08). The day you pass, change the line in resume.json's `certifications` and in src/index.njk to the pass month, and update CareerWork/FACTS.md and LinkedIn. If the exam slips past December, change the month the same day.
 - [ ] Optional: a photo or screenshot of the kitchen board for the cafe case study. In TheCafeSite, the "kitchen-mock" preview (or kitchen/start-dev.bat) runs it on demo orders. Add it to the `gallery` in both copies of the-cafe.md.
 
 ## Go live
@@ -48,4 +54,5 @@ The vault's warning holds: polishing a personal site feels like career work and 
 - 2026-11-06: Eleventy 3 and Nunjucks, same as the other two sites; NFO shared hosting and GitHub Actions FTP deploy, same as TheCafeSite.
 - 2026-11-06: resume.json is the resume's one source, with three versions picked per bullet; PDFs printed by headless Chrome (the cafe's /studio/ export method); the phone number only in the gitignored private.json.
 - 2026-11-06: project files share mtch.tech's front matter and shortcodes so they move between the sites unchanged.
+- 2026-11-08: Security+ is listed as in progress on the site and resumes, replacing CareerWork's earlier "no cert until you pass" rule. It sits under the Education heading so it costs one line.
 - 2026-11-06: game projects stay off this site except one footer link; the SourcePawn line is in resume.json's bank (`for: []`) if a role makes it worth adding.

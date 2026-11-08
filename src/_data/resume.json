@@ -271,7 +271,6 @@
               "for": [
                 "platform",
                 "backend",
-                "product",
                 "federal"
               ],
               "text": "Wrote Ruby pull-request checks that caught pipeline misconfigurations before deployment, saving about 4 hours of redeploys a week."
@@ -363,7 +362,6 @@
                 "platform",
                 "backend",
                 "product",
-                "support",
                 "federal"
               ],
               "text": "Built backend libraries in Java and Python used by 50+ internal teams while earning an associate's degree and a B.S."
@@ -406,6 +404,19 @@
       "degree": "Associate of Applied Science",
       "school": "Kansas City Kansas Community College",
       "year": "2015"
+    }
+  ],
+  "certifications": [
+    {
+      "_note": "In progress per Mitch, 2026-11-08. When he passes: change to \"CompTIA Security+ (SY0-801), <Month Year>\" here and in CareerWork/FACTS.md.",
+      "for": [
+        "platform",
+        "backend",
+        "product",
+        "support",
+        "federal"
+      ],
+      "text": "CompTIA Security+ (SY0-801), in progress, exam expected December 2026"
     }
   ]
 }

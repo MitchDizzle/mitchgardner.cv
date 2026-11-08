@@ -80,8 +80,13 @@ title: Resume
   </ul>
   {% endif %}
 
-  <h2 class="cv-h">Education</h2>
+  {#- Certifications share the Education heading, so a cert costs one line, not a section. -#}
+  {% set certs = (resume.certifications or []) | forVariant(variant.id, privateBuild) %}
+  <h2 class="cv-h">Education{% if certs.length %} and certifications{% endif %}</h2>
   {% for e in resume.education %}
   <p class="edu">{{ e.degree }}, {{ e.school }}, {{ e.year }}</p>
+  {% endfor %}
+  {% for c in certs %}
+  <p class="edu">{{ c.text }}</p>
   {% endfor %}
 </article>
