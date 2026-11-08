@@ -28,7 +28,7 @@ Mirrors how lvcafetogo.com is hosted: an added domain on the existing NFO shared
 6. Check: the home page, /resume/, /Mitchell_Gardner_Resume.pdf, a missing page (should show the 404), and that the phone number appears nowhere.
 7. Then: LinkedIn (Contact info and Featured), GitHub profile README, email signature. See CareerWork/profiles/.
 
-Email: mitchgard13@gmail.com is fine on the resume. If you want contact@mitchgardner.cv, set up forwarding at the registrar or host and change `email` in resume.json.
+Email: the site and every PDF use contact@mitchgardner.cv, which forwards to Mitch's personal inbox. Only that one address exists; catch-all stays off so guessed addresses (info@, admin@) bounce. Test the forward before pushing any change to `email` in resume.json.
 
 ## Moving professional work off mtch.tech
 - Moves (or is shared): The Cafe entry. Any future work write-up goes here, in the same format, so it can also live on mtch.tech if you want it there.
