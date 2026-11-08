@@ -1,17 +1,42 @@
 # mitchgardner.cv on Apache shared hosting (same host as mtch.tech and lvcafetogo.com).
+# The host already sends http:// to https:// and gzips pages; the rules below do the rest.
 
 ErrorDocument 404 /404.html
 Options -Indexes
 
-# Turn these on once https://mitchgardner.cv loads with a valid certificate.
-# Before that, the redirect would send every visitor to a broken page.
-# <IfModule mod_rewrite.c>
-#   RewriteEngine On
-#   RewriteCond %{HTTPS} !=on
-#   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-#   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-#   RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
-# </IfModule>
+# Pages say UTF-8 themselves; this covers the files that can't (CSS, txt, XML).
+AddDefaultCharset utf-8
+AddCharset utf-8 .css .js .json .txt .xml .svg .webmanifest
+
+# One address: www.mitchgardner.cv goes to mitchgardner.cv, so links and
+# search results all point the same place.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Files on the server that aren't part of the site get a 404, mainly the FTP
+# deploy's .ftp-deploy-sync-state.json, which lists every uploaded file.
+# .well-known stays open for certificate renewals.
+RedirectMatch 404 /\.(?!well-known/)
+
+# Security headers. None of these change how the site looks or works:
+# - nosniff: files are only treated as the type the server says they are.
+# - Referrer-Policy: other sites see mitchgardner.cv, not the full page address.
+# - X-Frame-Options and frame-ancestors: other sites can't show these pages
+#   inside a frame of their own.
+# - Permissions-Policy: the site never asks for the camera, mic or location.
+# - Strict-Transport-Security: browsers use https only, for a year. Leave it
+#   on only while the certificate keeps renewing (it does on this host).
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Content-Security-Policy "frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>
 
 # CSS links carry a content hash (the `bust` filter), so they can be cached hard.
 <IfModule mod_expires.c>

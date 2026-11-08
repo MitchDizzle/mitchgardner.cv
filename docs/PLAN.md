@@ -22,10 +22,10 @@
 Mirrors how lvcafetogo.com is hosted: an added domain on the existing NFO shared hosting, deployed by GitHub Actions over FTP.
 1. NFO control panel: add mitchgardner.cv as a domain with its own folder, the same way lvcafetogo.com was added. Note the folder path.
 2. At the registrar where you bought mitchgardner.cv: point DNS at NFO (copy whatever lvcafetogo.com uses: nameservers or an A record).
-3. HTTPS: set up the certificate for mitchgardner.cv the same way as for lvcafetogo.com. Once https://mitchgardner.cv loads, uncomment the HTTPS redirect in src/.htaccess.
+3. HTTPS: set up the certificate for mitchgardner.cv the same way as for lvcafetogo.com. Done: the host sends http to https itself, and src/.htaccess sends www to the bare domain, hides dotfiles (the FTP deploy's sync-state file), and sets the security headers.
 4. GitHub: create a public repo named mitchgardner.cv. In Settings, Secrets and variables, Actions, add FTP_SERVER, FTP_USERNAME, FTP_PASSWORD, and FTP_SERVER_DIR (the folder from step 1). TheCafeSite has the same four.
 5. Commit and push to main. The Action builds the site and the public PDF and uploads them.
-6. Check: the home page, /resume/, /Mitchell_Gardner_Resume.pdf, a missing page (should show the 404), and that the phone number appears nowhere.
+6. Check: the home page, /resume/, /Mitchell_Gardner_Resume.pdf, a missing page (should show the 404), and that the phone number appears nowhere. The deploy's last step, "Check the live site", now checks the first three plus the www redirect and the hidden sync-state file after every upload.
 7. Then: LinkedIn (Contact info and Featured), GitHub profile README, email signature. See CareerWork/profiles/.
 
 Email: the site and every PDF use contact@mitchgardner.cv, which forwards to Mitch's personal inbox. Only that one address exists; catch-all stays off so guessed addresses (info@, admin@) bounce. Test the forward before pushing any change to `email` in resume.json.

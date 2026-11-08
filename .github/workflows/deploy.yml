@@ -40,3 +40,21 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
           local-dir: ./_site/
+
+      # A mistake in .htaccess takes the whole site down, so look at the live
+      # site right after uploading. A red X here means check it now.
+      - name: Check the live site
+        run: |
+          url=$(node -p "require('./src/_data/site.json').url")
+          pdf=$(node -p "require('./scripts/variants.js').loadVariants()[0].file")
+          fail=0
+          expect() {
+            got=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$2" || true)
+            if [ "$got" = "$1" ]; then echo "ok    $got  $2"; else echo "FAIL  $got  $2 (expected $1)"; fail=1; fi
+          }
+          expect 200 "$url/"
+          expect 200 "$url/resume/"
+          expect 200 "$url/$pdf.pdf"
+          expect 301 "${url/https:\/\//https://www.}/"
+          expect 404 "$url/.ftp-deploy-sync-state.json"
+          exit $fail
