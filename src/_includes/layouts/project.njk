@@ -1,0 +1,20 @@
+---
+layout: layouts/base.njk
+---
+{#- Same front matter as mtch.tech's projects. The cover `image` is used on cards only; the gallery shows it here. -#}
+<article class="wrap article">
+  <p class="crumb"><a href="/projects/">Work</a></p>
+  <h1>{{ title }}</h1>
+  <p class="lede">{{ description }}</p>
+  <div class="prose">
+    {% set galleryMarkup %}{% if gallery and gallery.length %}<div class="gallery">{% for g in gallery %}<figure><img src="{{ g.src }}" alt="{{ g.alt }}"{% if g.width %} width="{{ g.width }}" height="{{ g.height }}"{% endif %} loading="lazy" decoding="async">{% if g.caption %}<figcaption>{{ g.caption }}</figcaption>{% endif %}</figure>{% endfor %}</div>{% endif %}{% endset %}
+    {{ content | replace('<div data-project-gallery-placeholder></div>', galleryMarkup) | safe }}
+  </div>
+  {% if github_url or live_url %}
+  <p class="actions">
+    {% if live_url %}<a class="btn btn--primary" href="{{ live_url }}" rel="noopener">Visit the site</a>{% endif %}
+    {% if github_url %}<a class="btn" href="{{ github_url }}" rel="noopener">View the code</a>{% endif %}
+  </p>
+  {% endif %}
+  <p class="meta">Published <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time> · {{ category | projectCategory(tags) }}</p>
+</article>

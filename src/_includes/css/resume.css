@@ -1,0 +1,100 @@
+/* Resume page, screen and print. Inlined by layouts/resume.njk. One column on
+   purpose: applicant tracking systems read a single column in order. */
+:root {
+  --ink: #1c1917;
+  --muted: #57534e;
+  --line: #d6d3d1;
+  --accent: #b45309;
+  --paper: #ffffff;
+  --bar: #f5f5f4;
+}
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --ink: #f5f5f4;
+    --muted: #c7c2bd;
+    --line: #44403c;
+    --accent: #f59e0b;
+    --paper: #171412;
+    --bar: #201c19;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1rem/1.45 "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.25rem;
+  padding: 0.75rem 1rem;
+  background: var(--bar);
+  border-bottom: 1px solid var(--line);
+  font-size: 0.95rem;
+}
+.bar__actions { display: flex; gap: 1rem; align-items: center; }
+.bar button {
+  font: inherit;
+  color: var(--accent);
+  background: none;
+  border: 2px solid var(--accent);
+  border-radius: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+}
+
+.sheet { max-width: 8.5in; margin: 0 auto; padding: 1.75rem 1rem 3rem; }
+
+.cv-head { border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+.cv-name { font: 700 2rem/1.1 "Source Serif 4", Georgia, "Times New Roman", serif; margin: 0; }
+.cv-title { margin: 0.2rem 0 0; font-weight: 700; color: var(--accent); }
+.cv-contact { margin: 0.35rem 0 0; color: var(--muted); }
+.cv-contact--links { margin-top: 0.05rem; }
+.cv-contact a { color: inherit; text-decoration: none; }
+.cv-contact .sep { margin: 0 0.35rem; color: var(--line); }
+
+.cv-summary { margin: 0.75rem 0 0; }
+
+.cv-h {
+  font: 700 0.85rem/1.2 "Source Sans 3", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 1.1rem 0 0.35rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid var(--line);
+}
+.cv-skill { margin: 0.1rem 0; }
+
+.job { margin-top: 0.65rem; }
+.job__head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 1rem; align-items: baseline; }
+.job__role { font-size: 1rem; font-weight: 700; margin: 0; }
+.role__head { margin-top: 0.3rem; }
+.role__title { font-size: 1rem; font-weight: 600; font-style: italic; margin: 0; }
+.job__dates { color: var(--muted); white-space: nowrap; }
+.job__line { margin: 0.05rem 0 0; color: var(--muted); }
+.job ul, .cv-list { margin: 0.25rem 0 0; padding-left: 1.1rem; }
+.job li, .cv-list li { margin: 0.12rem 0; }
+.edu { margin: 0.1rem 0; }
+.job__fed { margin: 0.05rem 0 0; color: var(--muted); font-size: 0.95em; }
+
+@page { size: letter; margin: 0.4in 0.55in; }
+@media print {
+  .bar { display: none; }
+  body { font-size: 9.5pt; line-height: 1.28; background: #fff; color: #000; }
+  .sheet { max-width: none; padding: 0; }
+  .cv-name { font-size: 20pt; }
+  a { color: inherit; text-decoration: none; }
+  .cv-title, .cv-h { color: #8a3d05; }
+  .job__head, .job__line, .cv-h { break-after: avoid; }
+  li { break-inside: avoid; }
+  .job li, .cv-list li { margin: 0.08rem 0; }
+}

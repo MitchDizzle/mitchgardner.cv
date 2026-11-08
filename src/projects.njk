@@ -1,0 +1,22 @@
+---
+title: Work
+description: "Case studies: a restaurant's ordering and kitchen display system, a deployment platform for 500+ microservices, a dependency checker used across 3,000+ projects, and a circuit breaker for a healthcare platform's proxy."
+layout: layouts/base.njk
+permalink: /projects/index.html
+---
+<section class="wrap article">
+  <h1>Work</h1>
+  <p class="lede">What I built, why it was built that way, and what I'd change. The Oracle and Cerner write-ups describe the work without internal code or names.</p>
+  <ul class="cards">
+    {% for p in collections.projects %}
+    <li class="card">
+      {% if p.data.image %}<img src="{{ p.data.image }}" alt="" width="720" height="450" loading="lazy" decoding="async">{% endif %}
+      <div class="card__body">
+        <span class="card__tag">{{ p.data.category | projectCategory(p.data.tags) }}</span>
+        <h2 class="h3"><a href="{{ p.url }}">{{ p.data.title }}</a></h2>
+        <p>{{ p.data.description }}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

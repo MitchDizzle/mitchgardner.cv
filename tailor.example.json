@@ -1,0 +1,8 @@
+{
+  "_note": "Copy to tailor.json (gitignored) to make a one-off resume for a single posting, then run `npm run pdf`. It keeps the base version's bullets and replaces only the title, summary, skills order, and file name. Never add a claim here that isn't in resume.json or CareerWork/FACTS.md. Delete tailor.json when you're done with that posting.",
+  "base": "platform",
+  "file": "Mitchell_Gardner_Resume_Acme",
+  "title": "Platform Engineer",
+  "summary": "Software engineer with 5 years full time at Cerner and Oracle Health, after 7 years there as a part-time apprentice. Ran the Spinnaker deployment platform for 500+ microservices across AWS and OCI and built a Maven dependency check adopted across 3,000+ projects. Since February 2026, the only engineer at a restaurant moving to retail.",
+  "skills": ["delivery", "cloud", "languages", "security"]
+}

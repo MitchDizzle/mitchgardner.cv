@@ -1,0 +1,12 @@
+{
+  "name": "Mitchell Gardner",
+  "shortName": "mitchgardner.cv",
+  "url": "https://mitchgardner.cv",
+  "description": "Mitchell Gardner, software engineer in the Kansas City area: platform, DevOps, and backend. Five years full time at Cerner and Oracle Health after a part-time apprenticeship there, and the only engineer behind a restaurant's move to retail.",
+  "nav": [
+    { "label": "Work", "url": "/projects/" },
+    { "label": "Resume", "url": "/resume/" },
+    { "label": "Contact", "url": "/#contact" }
+  ],
+  "hobbySite": { "label": "Games and hobby projects: mtch.tech", "url": "https://mtch.tech" }
+}

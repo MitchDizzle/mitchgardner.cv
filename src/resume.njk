@@ -1,0 +1,87 @@
+---
+pagination:
+  data: resumeVariants
+  size: 1
+  alias: variant
+permalink: "/resume/{% if variant.slug %}{{ variant.slug }}/{% endif %}index.html"
+layout: layouts/resume.njk
+title: Resume
+---
+<article class="sheet">
+  <header class="cv-head">
+    <h1 class="cv-name">{{ resume.name }}</h1>
+    <p class="cv-title">{{ variant.title }}</p>
+    {#- Two deliberate lines, so a wrap never starts a line with a separator. -#}
+    <p class="cv-contact">
+      {{ resume.location }}<span class="sep">|</span><a href="mailto:{{ resume.email }}">{{ resume.email }}</a>
+      {%- if privateContact.phone %}<span class="sep">|</span>{{ privateContact.phone }}{% endif %}
+    </p>
+    <p class="cv-contact cv-contact--links">
+      <a href="{{ resume.website.url }}">{{ resume.website.display }}</a>
+      {%- for l in resume.links %}<span class="sep">|</span><a href="{{ l.url }}">{{ l.display }}</a>{% endfor %}
+    </p>
+  </header>
+
+  <p class="cv-summary">{{ variant.summary }}</p>
+
+  <h2 class="cv-h">Skills</h2>
+  {% for key in variant.skills %}{% set s = resume.skills[key] %}
+  <p class="cv-skill"><strong>{{ s.label }}:</strong> {{ s.items }}</p>
+  {% endfor %}
+
+  <h2 class="cv-h">Experience</h2>
+  {% for job in resume.jobs %}
+  <section class="job">
+    {% if job.roles %}
+    {#- One employer, several roles (Cerner, then Oracle after the acquisition): the employer once, then each role. -#}
+    <div class="job__head">
+      <h3 class="job__role">{{ job.company }}</h3>
+      <span class="job__dates">{{ job.start | monthYear }} to {{ job.end | monthYear }}</span>
+    </div>
+    <p class="job__line">{{ job.place }}{% if job.line %}. {{ job.line }}{% endif %}</p>
+    {% for role in job.roles %}
+    {% set bullets = role.bullets | forVariant(variant.id, privateBuild) %}
+    <div class="job__head role__head">
+      <h4 class="role__title">{{ role.title }}</h4>
+      <span class="job__dates">{{ role.start | monthYear }} to {{ role.end | monthYear }}</span>
+    </div>
+    {% if variant.federal %}<p class="job__fed">Hours per week: {{ role.hours or "part-time" }}</p>{% endif %}
+    {% if bullets.length %}
+    <ul>
+      {% for b in bullets %}<li>{{ b.publicText if (b.publicText and not privateBuild) else b.text }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    {% set bullets = job.bullets | forVariant(variant.id, privateBuild) %}
+    <div class="job__head">
+      <h3 class="job__role">{{ job.title }}, {{ job.company }}</h3>
+      <span class="job__dates">{{ job.start | monthYear }} to {{ job.end | monthYear }}</span>
+    </div>
+    <p class="job__line">{{ job.place }}{% if job.line %}. {{ job.line }}{% endif %}</p>
+    {% if variant.federal %}<p class="job__fed">Hours per week: {{ job.hours or "part-time" }}</p>{% endif %}
+    {% if bullets.length %}
+    <ul>
+      {% for b in bullets %}<li>{{ b.publicText if (b.publicText and not privateBuild) else b.text }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endif %}
+  </section>
+  {% endfor %}
+
+  {% set projects = resume.projects | forVariant(variant.id, privateBuild) %}
+  {% if projects.length %}
+  <h2 class="cv-h">Projects</h2>
+  <ul class="cv-list">
+    {% for p in projects %}<li>{{ p.text }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <h2 class="cv-h">Education</h2>
+  {% for e in resume.education %}
+  <p class="edu">{{ e.degree }}, {{ e.school }}, {{ e.year }}</p>
+  {% endfor %}
+</article>

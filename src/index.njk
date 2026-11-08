@@ -1,0 +1,49 @@
+---
+title: Mitchell Gardner
+description: "Software engineer in the Kansas City area: platform, DevOps, and backend. Five years full time at Cerner and Oracle Health after a part-time apprenticeship there, and the only engineer behind a restaurant's move to retail."
+layout: layouts/base.njk
+---
+<section class="wrap hero">
+  <p class="eyebrow">Software engineer · Kansas City area</p>
+  <h1>Mitchell Gardner</h1>
+  <p class="lede">I build the systems other people depend on: deployment platforms and developer tooling at Cerner and Oracle Health, and since February 2026 the ordering and kitchen display at The Cafe in Leavenworth, where I also work the front counter.</p>
+  <p class="actions">
+    <a class="btn btn--primary" href="/resume/">Resume</a>
+    <a class="btn" href="/{{ resume.variants[0].file }}.pdf">Download PDF</a>
+    <a class="btn" href="mailto:{{ resume.email }}">Email me</a>
+  </p>
+</section>
+
+<section class="wrap stats" aria-label="By the numbers">
+  <p class="stat"><span class="stat__num">Since 2013</span><span class="stat__label">at Cerner, then Oracle Health: seven years as a part-time apprentice, five full time</span></p>
+  <p class="stat"><span class="stat__num">500+</span><span class="stat__label">microservices on the Oracle deployment platform I ran</span></p>
+  <p class="stat"><span class="stat__num">3,000+</span><span class="stat__label">projects using the Maven plugin I led at Cerner</span></p>
+</section>
+
+<section class="wrap" aria-labelledby="work-h">
+  <h2 id="work-h">Selected work</h2>
+  <ul class="cards">
+    {% for p in collections.projects %}
+    <li class="card">
+      {% if p.data.image %}<img src="{{ p.data.image }}" alt="" width="720" height="450" loading="lazy" decoding="async">{% endif %}
+      <div class="card__body">
+        <span class="card__tag">{{ p.data.category | projectCategory(p.data.tags) }}</span>
+        <h3><a href="{{ p.url }}">{{ p.data.title }}</a></h3>
+        <p>{{ p.data.description }}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="wrap about" aria-labelledby="about-h">
+  <h2 id="about-h">About</h2>
+  <p>I got into software through game servers. I wanted to build things people would enjoy, had no budget and nobody to teach me, and learned by trial and error. That led to Cerner's apprenticeship in 2013, part-time while I finished my degree, and a full-time engineering job there in 2021. After Oracle bought Cerner in 2022, I moved to a team that worked between Oracle and Cerner engineering on deployments.</p>
+  <p>Since February 2026 I've been the only engineer at The Cafe, a breakfast, lunch, and catering restaurant in Leavenworth, Kansas. I also take orders at the front counter during service, so I see the software I wrote used every day, usually in the middle of a lunch rush.</p>
+  <p>Outside work: motorcycles, baking, and game-server mods, which live on my other site, <a href="{{ site.hobbySite.url }}">mtch.tech</a>.</p>
+</section>
+
+<section class="wrap contact" id="contact" aria-labelledby="contact-h">
+  <h2 id="contact-h">Contact</h2>
+  <p>I'm looking for platform, DevOps, or backend work, remote or in the Kansas City area. Email is best: <a href="mailto:{{ resume.email }}">{{ resume.email }}</a>. I'm also on <a href="{{ resume.links[1].url }}">LinkedIn</a> and <a href="{{ resume.links[0].url }}">GitHub</a>.</p>
+</section>

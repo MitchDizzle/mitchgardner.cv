@@ -1,0 +1,4 @@
+{
+  "_note": "Copy to private.json (gitignored) and fill in. Only `npm run pdf` reads it, so the phone number reaches the PDFs you send and never the public site.",
+  "phone": "(000) 000-0000"
+}

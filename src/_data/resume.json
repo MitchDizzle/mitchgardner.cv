@@ -1,0 +1,411 @@
+{
+  "_note": "The resume's one source: the /resume/ pages and every PDF are built from this file. Each bullet's `for` lists the versions that print it (platform, backend, product, support); an empty list keeps it in the bank for cover letters and tailoring. `private: true` prints only in the PDFs from `npm run pdf`, never on the public site. Facts must match E:\\ScriptsGit\\CareerWork\\FACTS.md. Dates are YYYY-MM; an empty end prints Present. No em dashes. Every PDF must stay one page: run `npm run pdf` and check _pdf/ after any change.",
+  "_years": "Experience is stated as 5 years full time (Cerner and Oracle Health, Jan 2021 to Sep 2025) after a 7-year part-time apprenticeship. Never a single total like 12 or 10: Mitch's call, 2026-11-06.",
+  "name": "Mitchell Gardner",
+  "location": "Leavenworth, KS (Kansas City area)",
+  "email": "mitchgard13@gmail.com",
+  "website": {
+    "url": "https://mitchgardner.cv",
+    "display": "mitchgardner.cv"
+  },
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/MitchDizzle",
+      "display": "github.com/MitchDizzle"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/mitchell-r-gardner/",
+      "display": "linkedin.com/in/mitchell-r-gardner"
+    }
+  ],
+  "variants": [
+    {
+      "id": "platform",
+      "slug": "",
+      "label": "Platform",
+      "file": "Mitchell_Gardner_Resume",
+      "title": "Software Engineer: Platform, DevOps & Backend",
+      "summary": "Software engineer with 5 years full time at Cerner and Oracle Health, after 7 years there as a part-time apprentice. Ran the deployment platform for 500+ microservices across AWS and OCI and built a Maven dependency check adopted across 3,000+ projects. Since February 2026, the only engineer at a restaurant moving to retail: its website, Square and DoorDash ordering, and a kitchen display system built in place of a paid one.",
+      "skills": [
+        "delivery",
+        "cloud",
+        "languages",
+        "security"
+      ]
+    },
+    {
+      "id": "backend",
+      "slug": "backend",
+      "label": "Backend",
+      "file": "Mitchell_Gardner_Resume_Backend",
+      "title": "Software Engineer: Backend, Java & Integrations",
+      "summary": "Software engineer with 5 years full time at Cerner and Oracle Health, after 7 years there as a part-time apprentice, writing code other engineers build on: Java and Python libraries used by 50+ teams, a Maven plugin adopted across 3,000+ projects, and a Resilience4j circuit breaker for a healthcare platform's proxy. Since February 2026, wrote and run a Node.js kitchen display system on the Square Orders API for a busy restaurant.",
+      "skills": [
+        "languages",
+        "backend",
+        "delivery",
+        "cloud"
+      ]
+    },
+    {
+      "id": "product",
+      "slug": "product",
+      "label": "Product",
+      "file": "Mitchell_Gardner_Resume_Product",
+      "title": "Software Engineer: Full Stack, Integrations & Platforms",
+      "summary": "Software engineer who built and runs every system a restaurant opened with, and works its front counter: website, Square POS and online ordering, DoorDash through Square, and a kitchen display system on the Square Orders API. Before that, 5 years full time at Cerner and Oracle Health on deployment platforms and developer tooling, after 7 years there as a part-time apprentice.",
+      "skills": [
+        "web",
+        "operations",
+        "languages",
+        "delivery"
+      ]
+    },
+    {
+      "id": "support",
+      "slug": "support",
+      "label": "Support",
+      "file": "Mitchell_Gardner_Resume_Support",
+      "title": "Software Engineer: Implementation, Support & Operations",
+      "summary": "Software engineer who works both sides of the counter: the only engineer at a busy restaurant, on its front counter through the lunch rush, and the one running its Facebook page and answering its customers. Set up its Square and DoorDash ordering, wrote the kitchen display the cooks use, and trained the staff on it. Before that, 5 years full time at Cerner and Oracle Health as the escalation point for 15+ service teams.",
+      "skills": [
+        "operations",
+        "web",
+        "delivery",
+        "languages"
+      ]
+    },
+    {
+      "id": "federal",
+      "slug": "federal",
+      "label": "Federal",
+      "file": "Mitchell_Gardner_Resume_Federal",
+      "maxPages": 2,
+      "federal": true,
+      "title": "Software Engineer: IT Specialist (Application Software, DevOps)",
+      "summary": "Software engineer with 5 years full time at Cerner and Oracle Health, after 7 years there as a part-time software apprentice. Ran the deployment platform for 500+ microservices across AWS and Oracle Cloud Infrastructure, built a dependency security check adopted across 3,000+ projects, and served as the escalation point for 15+ service teams. Since February 2026, the only engineer at a Leavenworth restaurant: built and run its website, point-of-sale and delivery ordering integration, and kitchen display system, and work its front counter.",
+      "skills": [
+        "delivery",
+        "cloud",
+        "security",
+        "languages",
+        "operations"
+      ]
+    }
+  ],
+  "skills": {
+    "languages": {
+      "label": "Languages",
+      "items": "Java, Python, JavaScript (Node.js), Ruby, SQL, Bash, PowerShell"
+    },
+    "delivery": {
+      "label": "CI/CD and containers",
+      "items": "Jenkins, Spinnaker, GitHub Actions, GitHub Enterprise, Maven, Docker, Kubernetes"
+    },
+    "cloud": {
+      "label": "Cloud",
+      "items": "AWS, Oracle Cloud Infrastructure (OCI), including an AWS to OCI move"
+    },
+    "security": {
+      "label": "Security",
+      "items": "Fortify, CVE remediation, dependency scanning"
+    },
+    "backend": {
+      "label": "Backend",
+      "items": "REST APIs, Resilience4j, Maven plugins, Square APIs (Orders, Catalog), polling, retries, idempotency"
+    },
+    "web": {
+      "label": "Web and integrations",
+      "items": "Eleventy, HTML, CSS, accessibility, Square APIs, DoorDash through Square, Google Apps Script, headless Chrome"
+    },
+    "operations": {
+      "label": "Operations and people",
+      "items": "Square POS and Square Online, front counter and phone orders, Facebook page and daily Stories, customer messages, catering, staff training, runbooks, escalations"
+    }
+  },
+  "jobs": [
+    {
+      "company": "The Cafe (The Cafe Catering LLC)",
+      "place": "Leavenworth, KS",
+      "title": "Software Engineer",
+      "start": "2026-02",
+      "end": "",
+      "line": "Only engineer, and on the front counter during service, at a breakfast, lunch, and catering restaurant moving from contract meal service to retail.",
+      "bullets": [
+        {
+          "for": [
+            "platform",
+            "backend",
+            "product",
+            "federal"
+          ],
+          "text": "Built and run the systems the restaurant opened with on Oct 5, 2026: website, Square POS and online ordering, DoorDash through Square, and a kitchen display system used every service."
+        },
+        {
+          "for": [
+            "platform",
+            "backend",
+            "product",
+            "support",
+            "federal"
+          ],
+          "text": "Wrote the kitchen display in dependency-free Node.js on a mini PC instead of paying for Square's KDS or renting DoorDash's tablet (about $100 a month avoided): it polls the Square Orders API, shows counter, online, and DoorDash tickets cooks clear from a number pad, and marks orders Ready in Square, which texts the customer."
+        },
+        {
+          "for": [
+            "product",
+            "support",
+            "federal"
+          ],
+          "text": "Run the front counter through breakfast and lunch rushes: take orders in person and by phone, ring them into Square while holding the next one in memory, and keep DoorDash drivers, waiting customers, and the kitchen in step."
+        },
+        {
+          "for": [
+            "support",
+            "federal"
+          ],
+          "text": "Run the cafe's Facebook page: the daily special goes to the Facebook Story every service day from a template I built into the kitchen PC (take a photo, pick the special, save, share), reaching hundreds of views a day, and I answer customer messages and comments in the cafe's voice whenever they come in.",
+          "publicText": "Run the cafe's Facebook page: the daily special goes to the Facebook Story every service day from a template I built into the kitchen PC (take a photo, pick the special, save, share), and I answer customer messages and comments in the cafe's voice whenever they come in."
+        },
+        {
+          "for": [
+            "support",
+            "product",
+            "federal"
+          ],
+          "text": "Help Dalton run the catering side (D-Ray Catering): turned his catering guide into data that prints the tri-fold he hands to clients and emails as a PDF, and built the website's catering request form."
+        },
+        {
+          "for": [
+            "support",
+            "federal"
+          ],
+          "text": "Trained the staff on the POS and the kitchen board (it has a practice mode of demo orders), wrote the counter's daily routine and troubleshooting sheet, and adjusted the system to how the team works with and without each person on shift."
+        },
+        {
+          "for": [
+            "support",
+            "product",
+            "federal"
+          ],
+          "private": true,
+          "text": "In the first month, orders per day grew about 40% while the average kitchen time fell from 7.4 to 5.8 minutes, as measured by the board."
+        },
+        {
+          "for": [
+            "backend",
+            "product",
+            "federal"
+          ],
+          "text": "Timed online orders by kitchen load: each order reaches the cooks from the median prep time of same-size orders over the past 8 weeks, so large orders start early and small ones don't sit."
+        },
+        {
+          "for": [
+            "platform",
+            "federal"
+          ],
+          "text": "Set up GitHub Actions to build and deploy the site on every push to main; the kitchen PC updates itself from main at startup and backs up its data to a private GitHub repo."
+        },
+        {
+          "for": [
+            "federal"
+          ],
+          "text": "Chose hosted Square Online over a custom cart after costing both: live in days at $0 a month instead of a server to host and patch, with the custom path documented for later."
+        },
+        {
+          "for": [
+            "federal"
+          ],
+          "text": "Kept the menu and daily specials as JSON that builds the website, an in-store TV menu board, 39 printed and social pieces (rendered to PNG and PDF with headless Chrome), and the Square catalog import (Python)."
+        },
+        {
+          "for": [
+            "federal"
+          ],
+          "text": "Added table reservations on Google Apps Script and Sheets, a customer survey with a public results page, and a weekly sales report pulled from the Square API."
+        },
+        {
+          "for": [
+            "federal"
+          ],
+          "text": "Covered the board's order logic with 15 Node.js test files: ticket timing, Square status updates, specials, reservations, and stats."
+        },
+        {
+          "for": [
+            "federal"
+          ],
+          "text": "Fixed edge cases found by working service: Square marks counter orders complete when paid, cuts ticket names at 30 characters, and sends DoorDash Storefront pickups like deliveries; each fix is dated in the board's README."
+        },
+        {
+          "for": [],
+          "text": "Building a catering availability calendar: the owners label days in their Google Calendar (booked, tentative, who is out, closed) and the website shows each day as open, limited, booked, or closed, with no event details made public."
+        }
+      ],
+      "hours": 40
+    },
+    {
+      "company": "Oracle Health (formerly Cerner)",
+      "place": "Kansas City, MO",
+      "start": "2013-12",
+      "end": "2025-09",
+      "line": "Oracle acquired Cerner in 2022; from then on, on a team working between Oracle and Cerner engineering on deployments.",
+      "roles": [
+        {
+          "title": "Software Developer, Oracle",
+          "start": "2022-10",
+          "end": "2025-09",
+          "bullets": [
+            {
+              "for": [
+                "platform",
+                "backend",
+                "product",
+                "support",
+                "federal"
+              ],
+              "text": "Ran the Spinnaker deployment platform for 500+ microservices across AWS and OCI (Jenkins, GitHub Actions) for 20+ teams deploying weekly."
+            },
+            {
+              "for": [
+                "platform",
+                "backend",
+                "product",
+                "federal"
+              ],
+              "text": "Wrote Ruby pull-request checks that caught pipeline misconfigurations before deployment, saving about 4 hours of redeploys a week."
+            },
+            {
+              "for": [
+                "platform",
+                "backend",
+                "support",
+                "federal"
+              ],
+              "text": "Escalation point for 15+ service teams across Oracle and Cerner: Kubernetes deployment troubleshooting, rollbacks during incidents, onboarding teams onto the platform, and the move from AWS to OCI."
+            },
+            {
+              "for": [
+                "federal"
+              ],
+              "text": "Handled high-priority production escalations and coordinated rollbacks to keep services available during incidents."
+            },
+            {
+              "for": [
+                "federal"
+              ],
+              "text": "Helped move deployment environments from AWS to OCI (load balancing, debugging, log aggregation)."
+            },
+            {
+              "for": [
+                "federal"
+              ],
+              "text": "Onboarded outside teams onto the internal deployment platform and set up service connectivity across organization boundaries."
+            },
+            {
+              "for": [
+                "federal"
+              ],
+              "text": "Built deployment tooling against the GitHub Enterprise and Spinnaker APIs."
+            }
+          ],
+          "hours": 40
+        },
+        {
+          "title": "Software Engineer, Cerner",
+          "start": "2021-01",
+          "end": "2022-10",
+          "bullets": [
+            {
+              "for": [
+                "platform",
+                "backend",
+                "product",
+                "federal"
+              ],
+              "text": "Led a Maven plugin that checked dependencies for known vulnerabilities and version conflicts before release, adopted across 3,000+ projects; automated Fortify scanning across 300+ libraries, cutting manual CVE triage by 70%."
+            },
+            {
+              "for": [
+                "platform",
+                "backend",
+                "federal"
+              ],
+              "text": "Designed a Resilience4j circuit breaker for the Millennium platform's global proxy so failing services failed fast instead of holding connections for up to 2 minutes; tuned from production failure logs, load-tested with Gatling."
+            },
+            {
+              "for": [],
+              "text": "Automated Fortify vulnerability scanning with consolidated reports across 300+ libraries, cutting manual CVE triage by 70%."
+            },
+            {
+              "for": [
+                "federal"
+              ],
+              "text": "Maintained CI/CD pipelines for internal Java library builds on Jenkins and Maven."
+            },
+            {
+              "for": [
+                "federal"
+              ],
+              "text": "Mentored a high school student for a semester on how enterprise software is built."
+            }
+          ],
+          "hours": 40
+        },
+        {
+          "title": "KCIT Apprentice (part-time, software), Cerner",
+          "start": "2013-12",
+          "end": "2020-12",
+          "bullets": [
+            {
+              "for": [
+                "platform",
+                "backend",
+                "product",
+                "support",
+                "federal"
+              ],
+              "text": "Built backend libraries in Java and Python used by 50+ internal teams while earning an associate's degree and a B.S."
+            },
+            {
+              "for": [
+                "federal"
+              ],
+              "text": "Migrated legacy codebases from Subversion to GitHub Enterprise with git-svn."
+            },
+            {
+              "for": [
+                "federal"
+              ],
+              "text": "Took part in Agile cycles: testing, deployment, and troubleshooting of enterprise server infrastructure."
+            }
+          ],
+          "hours": null
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "for": [],
+      "text": "Small-business websites: a written planning method (owner questions, what each answer changes on the site) used on the cafe and other local sites; Eleventy with a CMS for non-developers on a community group's site."
+    },
+    {
+      "for": [],
+      "text": "Game-server mods since 2009: Sandbox Build for Counter-Strike: Source (SourcePawn, MySQL), a 12-player community server that was regularly full, and a Team Fortress 2 game mode on GitHub. More at mtch.tech."
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.S. Information Technology",
+      "school": "Colorado Technical University",
+      "year": "2021"
+    },
+    {
+      "degree": "Associate of Applied Science",
+      "school": "Kansas City Kansas Community College",
+      "year": "2015"
+    }
+  ]
+}

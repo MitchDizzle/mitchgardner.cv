@@ -1,0 +1,9 @@
+node_modules/
+_site/
+_pdf/
+# Phone number for the PDFs you send. Never commit it.
+private.json
+# One-off resume for a single posting (see tailor.example.json).
+tailor.json
+.DS_Store
+Thumbs.db
