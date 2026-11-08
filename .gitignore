@@ -7,3 +7,5 @@ private.json
 tailor.json
 .DS_Store
 Thumbs.db
+# Local instructions for Claude Code; they name private folders, so they stay off the public repo.
+CLAUDE.md

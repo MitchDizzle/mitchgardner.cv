@@ -2,6 +2,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
 const { loadVariants } = require("./scripts/variants.js");
+const { checkResume } = require("./scripts/check-resume.js");
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -10,6 +11,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/.htaccess": ".htaccess" });
   eleventyConfig.addWatchTarget("src/_includes/css/");
   eleventyConfig.addWatchTarget("src/_includes/js/");
+
+  // A typo in resume.json (an unknown version in `for`, a missing skills group)
+  // stops the build here instead of silently dropping that line from a resume.
+  eleventyConfig.on("eleventy.before", () => {
+    const errors = checkResume();
+    if (errors.length) throw new Error(`resume.json has problems:\n- ${errors.join("\n- ")}`);
+  });
 
   // The phone number lives in private.json (gitignored) and is read only for
   // `npm run pdf`, which sets RESUME_PRIVATE. The deployed site never has it.
