@@ -8,6 +8,17 @@
   --line: #e7e5e4;
   --accent: #b45309;      /* 5:1 on --paper and on white */
   --accent-ink: #ffffff;  /* text on an accent background */
+  /* Fire, red to yellow, for the moving lines only. Text and buttons keep --accent.
+     resume.css has the same tokens (that page carries its own CSS). */
+  --fire-1: #b91c1c;
+  --fire-2: #dc2626;
+  --fire-3: #ea580c;
+  --fire-4: #f59e0b;
+  --fire-5: #eab308;
+  --fire: linear-gradient(90deg, var(--fire-1), var(--fire-2), var(--fire-3), var(--fire-4), var(--fire-5), var(--fire-4), var(--fire-3), var(--fire-2), var(--fire-1));
+  --fire-top: linear-gradient(90deg, var(--fire-1), var(--fire-2), var(--fire-3), var(--fire-1), var(--fire-2), var(--fire-1), var(--fire-3), var(--fire-2), var(--fire-1));
+  --fire-bottom: linear-gradient(90deg, var(--fire-4), var(--fire-5), var(--fire-3), var(--fire-5), var(--fire-4), var(--fire-5), var(--fire-3), var(--fire-4), var(--fire-5));
+  --fire-time: 14s;
   --max: 68rem;
   --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-head: "Source Serif 4", Georgia, "Times New Roman", serif;
@@ -21,6 +32,11 @@
     --line: #3a3430;
     --accent: #f59e0b;
     --accent-ink: #1c1917;
+    --fire-1: #dc2626;
+    --fire-2: #ea580c;
+    --fire-3: #f97316;
+    --fire-4: #f59e0b;
+    --fire-5: #facc15;
   }
 }
 
@@ -46,7 +62,46 @@ h3 { font-size: 1.2rem; }
 .skip { position: absolute; left: -999px; }
 .skip:focus { left: 1rem; top: 1rem; z-index: 10; background: var(--card); padding: 0.5rem 1rem; }
 
-.top { border-bottom: 1px solid var(--line); }
+/* Fire lines: red along the top of the page, yellow along the bottom, the full
+   range in between, all drifting slowly side to side. */
+@keyframes fire { from { background-position-x: 0%; } to { background-position-x: 100%; } }
+.top, .foot { position: relative; }
+.top::after, .foot::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  pointer-events: none;
+  background-size: 300% 100%;
+  animation: fire var(--fire-time) ease-in-out infinite alternate;
+}
+.top::after { bottom: 0; background-image: var(--fire-top); }
+.foot::before { top: 0; background-image: var(--fire-bottom); animation-direction: alternate-reverse; }
+
+.top__end { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.25rem; }
+.motion-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+.js .motion-toggle { display: inline-flex; }
+.motion-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.motion-toggle svg { width: 0.9rem; height: 0.9rem; fill: currentColor; }
+.motion-toggle .i-play, [data-motion="paused"] .motion-toggle .i-pause { display: none; }
+[data-motion="paused"] .motion-toggle .i-play { display: block; }
+:root[data-motion="paused"] *, :root[data-motion="paused"] *::before, :root[data-motion="paused"] *::after {
+  animation-play-state: paused !important;
+}
+
 .top__inner {
   display: flex;
   flex-wrap: wrap;
@@ -58,8 +113,11 @@ h3 { font-size: 1.2rem; }
 }
 .brand { font-family: var(--font-head); font-weight: 700; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
 .nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; list-style: none; margin: 0; padding: 0; }
-.nav a { color: var(--ink); text-decoration: none; padding: 0.25rem 0; border-bottom: 2px solid transparent; }
-.nav a:hover, .nav a[aria-current="page"] { border-bottom-color: var(--accent); }
+.nav a { color: var(--ink); text-decoration: none; padding: 0.25rem 0 calc(0.25rem + 2px); }
+.nav a:hover, .nav a[aria-current="page"] {
+  background: var(--fire) 0 100% / 300% 2px no-repeat;
+  animation: fire var(--fire-time) ease-in-out infinite alternate;
+}
 
 main { padding-bottom: 4rem; }
 
@@ -85,7 +143,13 @@ main { padding-bottom: 4rem; }
   gap: 1.25rem;
   margin-top: 2.75rem;
 }
-.stat { border-top: 3px solid var(--accent); padding-top: 0.75rem; }
+.stat {
+  padding-top: calc(0.75rem + 3px);
+  background: var(--fire) 0 0 / 300% 3px no-repeat;
+  animation: fire var(--fire-time) ease-in-out infinite alternate;
+}
+.stat:nth-child(2) { animation-delay: -5s; }
+.stat:nth-child(3) { animation-delay: -10s; }
 .stat__num { display: block; font-family: var(--font-head); font-size: 2.2rem; font-weight: 700; line-height: 1.1; }
 .stat__label { color: var(--muted); }
 
@@ -105,6 +169,23 @@ main { padding-bottom: 4rem; }
   overflow: hidden;
 }
 .card:hover, .card:focus-within { border-color: var(--accent); }
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 1;
+  pointer-events: none;
+  background: var(--fire) 0 0 / 300% 100% no-repeat;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.card:hover::before, .card:focus-within::before {
+  opacity: 1;
+  animation: fire var(--fire-time) ease-in-out infinite alternate;
+}
 .card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-bottom: 1px solid var(--line); }
 .card__body { padding: 1rem; }
 .card h2, .card h3 { font-size: 1.2rem; margin: 0 0 0.35rem; }
@@ -127,11 +208,13 @@ figcaption { color: var(--muted); font-size: 1rem; margin-top: 0.5rem; }
 
 .about p, .contact p { max-width: 44rem; }
 
-.foot { border-top: 1px solid var(--line); padding: 1.5rem 0 2.5rem; color: var(--muted); font-size: 1rem; }
+.foot { padding: 1.5rem 0 2.5rem; color: var(--muted); font-size: 1rem; }
 .foot__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem 1.5rem; }
 .foot p { margin: 0; }
 .foot__links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; list-style: none; margin: 0; padding: 0; }
 
+/* Reduced motion: the fire lines stay, standing still, and there's nothing to pause. */
 @media (prefers-reduced-motion: reduce) {
-  * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+  .js .motion-toggle { display: none; }
 }

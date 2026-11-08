@@ -15,12 +15,16 @@
   <style>
 {% include "css/resume.css" %}
   </style>
+  <script>
+{% include "js/motion.js" %}
+  </script>
 </head>
 <body>
   <nav class="bar" aria-label="Resume">
     <a href="/">{{ site.shortName }}</a>
     {% if variant.slug %}<span>This is the {{ variant.label | lower }} version. <a href="/resume/">Main resume</a></span>{% endif %}
     <span class="bar__actions">
+      {% include "partials/motion-toggle.njk" %}
       <a href="/{{ resume.variants[0].file }}.pdf">Download PDF</a>
       <button type="button" onclick="window.print()">Print</button>
     </span>

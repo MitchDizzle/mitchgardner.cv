@@ -9,6 +9,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/.htaccess": ".htaccess" });
   eleventyConfig.addWatchTarget("src/_includes/css/");
+  eleventyConfig.addWatchTarget("src/_includes/js/");
 
   // The phone number lives in private.json (gitignored) and is read only for
   // `npm run pdf`, which sets RESUME_PRIVATE. The deployed site never has it.
