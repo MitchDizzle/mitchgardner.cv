@@ -78,6 +78,20 @@
       ]
     },
     {
+      "id": "admin",
+      "slug": "admin",
+      "label": "Admin",
+      "file": "Mitchell_Gardner_Resume_Admin",
+      "title": "Software Engineer: Enterprise Applications, Web & Administration",
+      "summary": "Software engineer with 5 years full time at Cerner and Oracle Health, after 7 years there as a part-time apprentice. Administered the deployment platform for 500+ microservices across AWS and OCI and was the escalation point for 15+ service teams. Since February 2026, the only engineer at a Leavenworth restaurant: set up its IT, point of sale, website, and ordering, and trained the staff.",
+      "skills": [
+        "admin",
+        "languages",
+        "delivery",
+        "security"
+      ]
+    },
+    {
       "id": "federal",
       "slug": "federal",
       "label": "Federal",
@@ -111,6 +125,10 @@
     "security": {
       "label": "Security",
       "items": "Fortify, CVE remediation, dependency scanning"
+    },
+    "admin": {
+      "label": "Admin and web",
+      "items": "Jira and Jira API automation, GitHub Enterprise, Google Workspace, Windows, Apache hosting, domains, HTTPS"
     },
     "backend": {
       "label": "Backend",
@@ -149,7 +167,8 @@
             "backend",
             "product",
             "support",
-            "federal"
+            "federal",
+            "admin"
           ],
           "text": "Wrote the kitchen display in dependency-free Node.js on a mini PC instead of paying for Square's KDS or renting DoorDash's tablet (about $100 a month avoided): it polls the Square Orders API, shows counter, online, and DoorDash tickets cooks clear from a number pad, and marks orders Ready in Square, which texts the customer."
         },
@@ -157,7 +176,8 @@
           "for": [
             "product",
             "support",
-            "federal"
+            "federal",
+            "admin"
           ],
           "text": "Run the front counter through breakfast and lunch rushes: take orders in person and by phone, ring them into Square while holding the next one in memory, and keep DoorDash drivers, waiting customers, and the kitchen in step."
         },
@@ -179,8 +199,16 @@
         },
         {
           "for": [
-            "support",
+            "admin",
             "federal"
+          ],
+          "text": "Set up the cafe's IT: 5G business internet, Google Workspace email and calendars for catering bookings, and the kitchen mini PC, which signs into Windows and opens the kitchen display at power-on so cooks only press the power button."
+        },
+        {
+          "for": [
+            "support",
+            "federal",
+            "admin"
           ],
           "text": "Trained the staff on the POS and the kitchen board (it has a practice mode of demo orders), wrote the counter's daily routine and troubleshooting sheet, and adjusted the system to how the team works with and without each person on shift."
         },
@@ -263,7 +291,8 @@
                 "backend",
                 "product",
                 "support",
-                "federal"
+                "federal",
+                "admin"
               ],
               "text": "Ran the Spinnaker deployment platform for 500+ microservices across AWS and OCI (Jenkins, GitHub Actions) for 20+ teams deploying weekly."
             },
@@ -280,7 +309,8 @@
                 "platform",
                 "backend",
                 "support",
-                "federal"
+                "federal",
+                "admin"
               ],
               "text": "Escalation point for 15+ service teams across Oracle and Cerner: Kubernetes deployment troubleshooting, rollbacks during incidents, onboarding teams onto the platform, and the move from AWS to OCI."
             },
@@ -321,7 +351,8 @@
                 "platform",
                 "backend",
                 "product",
-                "federal"
+                "federal",
+                "admin"
               ],
               "text": "Led a Maven plugin that checked dependencies for known vulnerabilities and version conflicts before release, adopted across 3,000+ projects; automated Fortify scanning across 300+ libraries, cutting manual CVE triage by 70%."
             },
@@ -368,6 +399,13 @@
             },
             {
               "for": [
+                "admin",
+                "federal"
+              ],
+              "text": "Took part in code reviews on a small systems infrastructure team, which is where I learned the shared libraries in depth."
+            },
+            {
+              "for": [
                 "federal"
               ],
               "text": "Migrated legacy codebases from Subversion to GitHub Enterprise with git-svn."
@@ -385,6 +423,13 @@
     }
   ],
   "projects": [
+    {
+      "for": [
+        "admin",
+        "federal"
+      ],
+      "text": "Websites and domains for friends and local businesses: register and renew 6 domains, host the live sites on Apache with HTTPS and security headers, and show each owner what changed and how to update it."
+    },
     {
       "for": [],
       "text": "Small-business websites: a written planning method (owner questions, what each answer changes on the site) used on the cafe and other local sites; Eleventy with a CMS for non-developers on a community group's site."
@@ -414,7 +459,8 @@
         "backend",
         "product",
         "support",
-        "federal"
+        "federal",
+        "admin"
       ],
       "text": "CompTIA Security+ (SY0-801), in progress, exam expected December 2026"
     }

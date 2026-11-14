@@ -1,14 +1,17 @@
 ---
-title: "The Cafe: website, ordering, and kitchen board"
+title: "The Cafe: opening a restaurant to the public"
 date: 2026-11-06
-description: "The website, Square ordering, and kitchen order display a Leavenworth restaurant opened with on October 5, 2026, and still runs every service."
+description: "Everything a Leavenworth restaurant needed to open to the public on October 5, 2026: the store's IT and point of sale, a kitchen order board, the website, staff training, and a spot at the front counter."
 category: Software
-keywords: [Eleventy, Node.js, Square API, kitchen display, restaurant, point of sale, GitHub Actions, headless Chrome, Google Apps Script, Python]
+keywords: [Node.js, Square API, kitchen display, point of sale, restaurant, small business IT, Google Workspace, staff training, Eleventy, GitHub Actions, headless Chrome, Google Apps Script, Python]
 featured: true
+# On both sites: edit here, then `npm run sync -- --to-mtch` (or the other way).
+shared: true
 image: "/assets/img/projects/the-cafe/website.webp"
 imageAlt: "The Cafe's home page: the script wordmark on a dark teal background, with Order Online, Menu & Specials, and Catering buttons and the hours below."
 github_url: "https://github.com/MitchDizzle/TheCafeSite"
 live_url: "https://lvcafetogo.com"
+# When the game entry is public, link it from "Both sides of the counter".
 # Still to add: a photo or screenshot of the kitchen board (kitchen/start-dev.bat runs it on demo orders).
 gallery:
   - src: "/assets/img/projects/the-cafe/website.webp"
@@ -30,6 +33,14 @@ gallery:
 
 The Cafe is a breakfast, lunch, and catering restaurant in Leavenworth, Kansas. In 2026 it moved from cooking for a contract meal program to serving the public: a counter, online pickup orders, and DoorDash. I joined in February 2026. I'm its only engineer, and during service I'm usually at the front counter taking orders. It opened to retail customers on October 5, 2026, on the systems below, and they run every service.
 
+The website is the part people see, and it's the smallest part. The job is:
+
+- **The store's IT**: internet, the point of sale, the kitchen PC, email and calendars.
+- **The kitchen board**: the program that shows every order to the cooks and talks back to Square.
+- **The website and print**: menus, signs, and posts, all from one set of data.
+- **The people**: training the staff, writing their routine sheet, and working the counter myself.
+- **The cafe's Facebook page and catering**, with the owners.
+
 ## What it had to do
 
 When the meal contract ended in September, the cafe had to open to the public in October, and that date couldn't move. The staff are cooks and counter staff, the software budget was close to nothing, and the building gets the occasional power flicker. Everything had to work for them, on those terms.
@@ -40,13 +51,11 @@ The first plan was a custom web application on a VPS: customer accounts, a cart,
 
 So the business runs on Square: POS at the counter, Square Online for pickups, and DoorDash through Square. The website is static and links to the ordering site. The custom path is written down for later, if the volume ever justifies it.
 
-## The website
+## Setting up the store
 
-[lvcafetogo.com](https://lvcafetogo.com) is built with Eleventy 3 and Nunjucks and served as static files from Apache shared hosting. It has the menu with today's special at the top, catering packages, table reservations, a customer survey, a page that publishes what customers said (good and bad), a gallery, and an unlisted menu board sized for the 1920×1080 TV in the dining room. GitHub Actions builds and uploads it on every push to `main`. Work happens on a `dev` branch first.
+Before any software, the store needed the basics, and I set them up: 5G business internet, the Square POS at the counter, and the mini PC behind the kitchen's wall screen. That PC signs into Windows by itself at power-on and opens the kitchen board, so each morning the cooks press one button and nothing else.
 
-The customers skew older, so the type is large, the wording is plain, and the phone number is never far away.
-
-Reservations post to a Google Apps Script that keeps a Google Sheet, emails the cafe and the customer, and passes the request to the kitchen PC.
+I help run the cafe's Google Workspace, where its email and catering requests come in, and I'm moving catering appointments into Google Calendar with each client's details, so the owners have one place to look.
 
 ## The kitchen board
 
@@ -59,6 +68,14 @@ It also talks back. When a cook clears an online or DoorDash order, the board wa
 Online orders reach the cooks based on how long orders of that size have taken over the last eight weeks (the median, plus five minutes), so a ten-sandwich order starts early and a coffee doesn't sit. DoorDash deliveries wait until a driver has taken them, or fifteen minutes at most. Each morning the board reads the day's specials from the website and puts that day's plate and soup into Square, so online ordering always shows the right special.
 
 The PC updates itself from the `main` branch when it starts, backs its data up to a private GitHub repository during the day, and turns itself off at 9pm.
+
+## The website
+
+[lvcafetogo.com](https://lvcafetogo.com) is built with Eleventy 3 and Nunjucks and served as static files from Apache shared hosting. It has the menu with today's special at the top, catering packages, table reservations, a customer survey, a page that publishes what customers said (good and bad), a gallery, and an unlisted menu board sized for the 1920×1080 TV in the dining room. GitHub Actions builds and uploads it on every push to `main`. Work happens on a `dev` branch first.
+
+The customers skew older, so the type is large, the wording is plain, and the phone number is never far away.
+
+Reservations post to a Google Apps Script that keeps a Google Sheet, emails the cafe and the customer, and passes the request to the kitchen PC.
 
 ## Menus, signs, and posts from one set of data
 
@@ -80,6 +97,8 @@ Each of these is written into the board's README with the date it changed, so wh
 During service I'm usually at the register: taking orders in person and on the phone, ringing one in while the next customer is already talking, handing bags to DoorDash drivers, and telling people how long their food will be. That's where most of the fixes came from. When a ticket shows up late or in the wrong place, I'm the one standing there with the customer, so it gets fixed that afternoon.
 
 It also changed what I built. The front counter got its own screen with the same orders as the kitchen, a button to send a DoorDash order to the cooks early, and a practice mode with demo orders for training new staff.
+
+I trained the staff on the POS and the board, and wrote the counter's daily routine and troubleshooting sheet, so a normal day doesn't depend on me being the one who knows how it works.
 
 I also run the cafe's Facebook page. The day's special goes to the Facebook Story every service day, and Photo post, a tool on the kitchen PC's front page, makes that a one-minute job: take a photo on the phone, and it already knows the special, draws the branded picture with the hours and phone number, and writes the caption. Questions and comments come in at all hours. Every reply is public, so each one is written for everyone reading.
 

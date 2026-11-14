@@ -9,7 +9,7 @@
 - `npm run build` and `npm run pdf` both work. Platform, backend, product, and support PDFs are one page each; federal is two (USAJOBS's limit). The public PDF has no phone number and none of the cafe's own numbers.
 - A one-off version for a single posting comes from tailor.json (see tailor.example.json); CareerWork's applications/PIPELINE.md says when to use it.
 - `git init` done, nothing committed, no GitHub repo yet. Not deployed.
-- The Cafe case study is the same file as E:\ScriptsGit\mtch.tech\src\projects\the-cafe.md (copied 2026-11-06). If you edit one, copy it to the other.
+- Entries on both sites have `shared: true` in front matter. `npm run sync` says which differ; `-- --to-mtch` or `-- --from-mtch` copies them (and their image folders). Each site still builds and deploys from its own repo. Shared now: the-cafe, order-up (a draft until the owners clear the game).
 
 ## Before launch
 - [ ] Fill the blanks: the apprenticeship's hours per week (`hours` on that role in resume.json, for the federal version), and ask the owners about the cafe's numbers (they print only on the PDFs you send now, never on the site).
@@ -43,6 +43,12 @@ Email: the site and every PDF use contact@mitchgardner.cv, which forwards to Mit
   - src/_data/site.json `profiles`: add a "Portfolio" entry for https://mitchgardner.cv (footer and contact page build from that list).
   - If the cafe entry should live only here: delete src/projects/the-cafe.md there and add `Redirect 301 /projects/the-cafe/ https://mitchgardner.cv/projects/the-cafe/` to its src/.htaccess. Keeping it on both is also fine.
 
+## Working on both sites
+- One editor: open mitch-sites.code-workspace (this repo and ../mtch.tech side by side).
+- A project for both: write it in either repo with `shared: true`, then `npm run sync -- --to-mtch` (or `--from-mtch` from here). Commit and push each repo on its own; each one's push to main deploys only that site.
+- `draft: true` keeps an entry off this site entirely (no page, no list, no sitemap) and out of the sync, so a write-up can wait for an OK.
+- Order Up (the cafe's phone game) is its own entry so the game work is logged apart from the restaurant's systems. When the owners say go: remove `draft`, add `live_url` and screenshots, link it from the-cafe.md, sync.
+
 ## Later, only if there's new material
 The vault's warning holds: polishing a personal site feels like career work and mostly isn't. Make it good enough, then apply. Things worth adding only when they exist:
 - A kitchen board deep dive with real screenshots.
@@ -55,4 +61,5 @@ The vault's warning holds: polishing a personal site feels like career work and 
 - 2026-11-06: resume.json is the resume's one source, with three versions picked per bullet; PDFs printed by headless Chrome (the cafe's /studio/ export method); the phone number only in the gitignored private.json.
 - 2026-11-06: project files share mtch.tech's front matter and shortcodes so they move between the sites unchanged.
 - 2026-11-08: Security+ is listed as in progress on the site and resumes, replacing CareerWork's earlier "no cert until you pass" rule. It sits under the Education heading so it costs one line.
+- 2026-11-14: shared entries sync between the two repos by script (`npm run sync`), not a submodule or shared package, so each site's deploy stays exactly as it is. The cafe's game is the exception to "game projects stay off": it's work for the cafe, so it gets its own entry here.
 - 2026-11-06: game projects stay off this site except one footer link; the SourcePawn line is in resume.json's bank (`for: []`) if a role makes it worth adding.
