@@ -5,6 +5,7 @@ description: "Everything a Leavenworth restaurant needed to open to the public o
 category: Software
 keywords: [Node.js, Square API, kitchen display, point of sale, restaurant, small business IT, Google Workspace, staff training, Eleventy, GitHub Actions, headless Chrome, Google Apps Script, Python]
 featured: true
+order: 2
 # On both sites: edit here, then `npm run sync -- --to-mtch` (or the other way).
 shared: true
 image: "/assets/img/projects/the-cafe/website.webp"
@@ -12,7 +13,6 @@ imageAlt: "The Cafe's home page: the script wordmark on a dark teal background, 
 github_url: "https://github.com/MitchDizzle/TheCafeSite"
 live_url: "https://lvcafetogo.com"
 # When the game entry is public, link it from "Both sides of the counter".
-# Still to add: a photo or screenshot of the kitchen board (kitchen/start-dev.bat runs it on demo orders).
 gallery:
   - src: "/assets/img/projects/the-cafe/website.webp"
     alt: "The Cafe's home page: the script wordmark on a dark teal background, with Order Online, Menu & Specials, and Catering buttons and the hours below."
@@ -36,7 +36,7 @@ The Cafe is a breakfast, lunch, and catering restaurant in Leavenworth, Kansas. 
 The website is the part people see, and it's the smallest part. The job is:
 
 - **The store's IT**: internet, the point of sale, the kitchen PC, email and calendars.
-- **The kitchen board**: the program that shows every order to the cooks and talks back to Square.
+- **The kitchen board**: the program that shows every order to the cooks and talks back to Square. It has [its own write-up](/projects/kitchen-board/).
 - **The website and print**: menus, signs, and posts, all from one set of data.
 - **The people**: training the staff, writing their routine sheet, and working the counter myself.
 - **The cafe's Facebook page and catering**, with the owners.
@@ -59,15 +59,7 @@ I help run the cafe's Google Workspace, where its email and catering requests co
 
 ## The kitchen board
 
-Once the doors opened, the kitchen needed to see orders from the counter, online, and DoorDash in one place. Square's own kitchen display needs a paid Square plan plus $30 a month for each screen, on an Android tablet, and DoorDash rents its order tablet for $6 a week. I wrote a board instead and had DoorDash orders come in through Square, so the cafe pays for neither. (Prices from Square's and DoorDash's US pages in November 2026.)
-
-It's a Node.js program with no dependencies, running on a mini PC behind a wall screen. During kitchen hours it polls the Square Orders API every five seconds (every five minutes overnight) and shows each order as a ticket. Cooks work it from a number pad: 1 to 9 clears a ticket, 0 brings the last one back. Colors mean time and nothing else, and a new order flashes mint so new never looks like late. A chime means a new order. A low tone and a red banner mean the board has lost Square, and the kitchen printer, which never stopped printing, is the backup.
-
-It also talks back. When a cook clears an online or DoorDash order, the board waits ten seconds in case it was a mistake, then marks the order Ready in Square, which texts the customer or tells DoorDash. When the counter hands an order over, the board marks it picked up and closes it. Its writes to Square carry idempotency keys, and it retries a minute later if Square refuses.
-
-Online orders reach the cooks based on how long orders of that size have taken over the last eight weeks (the median, plus five minutes), so a ten-sandwich order starts early and a coffee doesn't sit. DoorDash deliveries wait until a driver has taken them, or fifteen minutes at most. Each morning the board reads the day's specials from the website and puts that day's plate and soup into Square, so online ordering always shows the right special.
-
-The PC updates itself from the `main` branch when it starts, backs its data up to a private GitHub repository during the day, and turns itself off at 9pm.
+Once the doors opened, the kitchen needed to see orders from the counter, online, and DoorDash in one place. Square's kitchen display and DoorDash's tablet would have cost about $100 a month, so I wrote a board instead: a Node.js program on a mini PC behind the kitchen's wall screen that reads orders from Square, shows them as tickets the cooks clear from a number pad, and marks them Ready in Square, which texts the customer. The kitchen printer never stopped printing, so if the board is ever off, nothing is lost. How it works, and the plan to make it its own project, is in [A kitchen order board for Square](/projects/kitchen-board/).
 
 ## The website
 
@@ -80,17 +72,6 @@ Reservations post to a Google Apps Script that keeps a Google Sheet, emails the 
 ## Menus, signs, and posts from one set of data
 
 The menu lives in one JSON file and the specials in another. The same files build the website menu, the TV board, the printed menus, the counter signs, the weekly Facebook post, and the import file for Square's catalog (a small Python script). There are 39 printed and social pieces, rendered as web pages and exported to PNG and PDF with headless Chrome during the build. A piece nobody has touched in two weeks archives itself, dated from git history.
-
-## What the kitchen taught me
-
-Most of the work came from watching service, not from the API documentation:
-
-- On a restaurant POS, a counter order is marked completed the moment it's paid. The board can't go by Square's status for those, so they stay up until a cook clears them.
-- Square keeps the first 30 characters of a ticket name. Phone orders put the pickup time first ("11:30 Sue"), and the board reads it.
-- Not every DoorDash order is a delivery. One pickup waited fifteen minutes for a driver who was never coming while the customer stood at the counter. The board now checks where each order came from, and the counter has a Send to kitchen now button for anything it's holding.
-- Square doesn't close a picked-up order by itself, and those open orders were missing from the sales reports until the board started closing them.
-
-Each of these is written into the board's README with the date it changed, so whoever looks after it next doesn't have to learn it again.
 
 ## Both sides of the counter
 

@@ -23,7 +23,7 @@ layout: layouts/base.njk
 <section class="wrap" aria-labelledby="work-h">
   <h2 id="work-h">Selected work</h2>
   <ul class="cards">
-    {% for p in collections.projects %}
+    {% for p in collections.featuredProjects %}
     <li class="card">
       {% if p.data.image %}<img src="{{ p.data.image }}" alt="" width="720" height="450" loading="lazy" decoding="async">{% endif %}
       <div class="card__body">
@@ -34,6 +34,7 @@ layout: layouts/base.njk
     </li>
     {% endfor %}
   </ul>
+  <p><a href="/projects/">All work</a>, including a study app and the system behind this site's resume.</p>
 </section>
 
 <section class="wrap about" aria-labelledby="about-h">

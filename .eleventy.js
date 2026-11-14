@@ -82,12 +82,14 @@ module.exports = function (eleventyConfig) {
   });
 
   // Newest first; `order` in front matter pins an entry higher.
-  eleventyConfig.addCollection("projects", (api) =>
+  const sortedProjects = (api) =>
     api
       .getFilteredByGlob("src/projects/*.md")
       .filter((item) => !item.data.draft)
-      .sort((a, b) => (b.data.order || 0) - (a.data.order || 0) || b.date - a.date)
-  );
+      .sort((a, b) => (b.data.order || 0) - (a.data.order || 0) || b.date - a.date);
+  eleventyConfig.addCollection("projects", sortedProjects);
+  // The home page's "Selected work": only entries with `featured: true`.
+  eleventyConfig.addCollection("featuredProjects", (api) => sortedProjects(api).filter((item) => item.data.featured === true));
 
   return {
     dir: { input: "src", output: "_site", includes: "_includes", data: "_data" },

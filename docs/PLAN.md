@@ -9,7 +9,7 @@
 - `npm run build` and `npm run pdf` both work. Platform, backend, product, and support PDFs are one page each; federal is two (USAJOBS's limit). The public PDF has no phone number and none of the cafe's own numbers.
 - A one-off version for a single posting comes from tailor.json (see tailor.example.json); CareerWork's applications/PIPELINE.md says when to use it.
 - `git init` done, nothing committed, no GitHub repo yet. Not deployed.
-- Entries on both sites have `shared: true` in front matter. `npm run sync` says which differ; `-- --to-mtch` or `-- --from-mtch` copies them (and their image folders). Each site still builds and deploys from its own repo. Shared now: the-cafe, order-up (a draft until the owners clear the game).
+- Entries on both sites have `shared: true` in front matter. `npm run sync` says which differ; `-- --to-mtch` or `-- --from-mtch` copies them (and their image folders). Each site still builds and deploys from its own repo. Shared now: the-cafe, kitchen-board, order-up (a draft until the owners clear the game).
 
 ## Before launch
 - [ ] Fill the blanks: the apprenticeship's hours per week (`hours` on that role in resume.json, for the federal version), and ask the owners about the cafe's numbers (they print only on the PDFs you send now, never on the site).
@@ -47,11 +47,13 @@ Email: the site and every PDF use contact@mitchgardner.cv, which forwards to Mit
 - One editor: open mitch-sites.code-workspace (this repo and ../mtch.tech side by side).
 - A project for both: write it in either repo with `shared: true`, then `npm run sync -- --to-mtch` (or `--from-mtch` from here). Commit and push each repo on its own; each one's push to main deploys only that site.
 - `draft: true` keeps an entry off this site entirely (no page, no list, no sitemap) and out of the sync, so a write-up can wait for an OK.
+- Entries (2026-11-14): the-cafe and kitchen-board (pinned first with `order`), resume-system, study-packs, and the three Oracle and Cerner ones are public. Drafts: order-up, small-business-websites (needs each owner's OK to be named, and the paid-or-not answer in FACTS.md). The home page shows only `featured: true` entries; /projects/ shows them all.
+- The kitchen board is its own entry because the goal is its own repo ("a kitchen board for Square", CafeWork KDS-STANDALONE.md). When that repo exists: change kitchen-board.md's github_url, and say so in its "Next" section.
 - Order Up (the cafe's phone game) is its own entry so the game work is logged apart from the restaurant's systems. When the owners say go: remove `draft`, add `live_url` and screenshots, link it from the-cafe.md, sync.
 
 ## Later, only if there's new material
 The vault's warning holds: polishing a personal site feels like career work and mostly isn't. Make it good enough, then apply. Things worth adding only when they exist:
-- A kitchen board deep dive with real screenshots.
+- Screenshots for kitchen-board.md and study-packs.md (each file's front matter says which).
 - A short "How I work" page from the WebsitePlaybook principles, if that repo goes public.
 - A write-up of the next real project.
 
