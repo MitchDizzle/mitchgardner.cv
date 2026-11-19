@@ -34,7 +34,7 @@ Everything in the game is something a customer has seen or eaten there. The tick
 
 ## How it's built
 
-It's plain JavaScript, HTML, and CSS, with no game engine, built into the cafe's existing Eleventy site. The drawings are one SVG sprite sheet. The music is made in the browser while you play, with the Web Audio API, so there are no audio files to download. Your saves and achievements stay on your phone. There are no accounts and no cookies.
+It's plain JavaScript, HTML, and CSS, with no game engine, built into the cafe's existing Eleventy site. Each drawing is its own SVG, ready to redraw in Inkscape or Illustrator, and the build joins them into one sprite sheet. The music is made in the browser while you play, with the Web Audio API, so there are no audio files to download. Your saves and achievements stay on your phone. There are no accounts and no cookies.
 
 Every number worth tuning lives in one data file: the foods, the tickets, the 15 specials, the 29 items, their odds and prices, and how hard each day gets on each level. The build checks that file against the cafe's real menu and warns if a ticket names a dish that's no longer on it.
 

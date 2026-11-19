@@ -42,12 +42,13 @@ Most of the work came from watching service, not from the API documentation:
 - Square keeps the first 30 characters of a ticket name. Phone orders put the pickup time first ("11:30 Sue"), and the board reads it.
 - Not every DoorDash order is a delivery. One pickup waited fifteen minutes for a driver who was never coming while the customer stood at the counter. The board now checks where each order came from, and the counter has a Send to kitchen now button for anything it's holding.
 - Square doesn't close a picked-up order by itself, and those open orders were missing from the sales reports until the board started closing them.
+- Square's "skip the item details screen" stays on after an item gains more kinds, so the iPad rang up the first kind of cookie or pie without asking which. Saving a dessert from the board now turns it off when there's more than one kind.
 
 Each one is written into the board's README with the date it changed, so whoever looks after it next doesn't have to learn it again.
 
 ## How it's built
 
-About 12,500 lines of JavaScript in 68 files, with 161 tests on Node's built-in test runner. There are no npm packages on purpose: the kitchen PC updates with a plain `git pull` and nothing to install, so an update has no step that can fail halfway. Every setting has a built-in default, so the PC's own settings file needs little more than the Square token. If a line in that file pins a setting so updates can't improve it, the board says so when it starts.
+About 13,200 lines of JavaScript in 68 files, with 171 tests on Node's built-in test runner. There are no npm packages on purpose: the kitchen PC updates with a plain `git pull` and nothing to install, so an update has no step that can fail halfway. Every setting has a built-in default, so the PC's own settings file needs little more than the Square token. If a line in that file pins a setting so updates can't improve it, the board says so when it starts.
 
 ## Next: its own repo
 

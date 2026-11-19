@@ -63,11 +63,11 @@ Once the doors opened, the kitchen needed to see orders from the counter, online
 
 ## The website
 
-[lvcafetogo.com](https://lvcafetogo.com) is built with Eleventy 3 and Nunjucks and served as static files from Apache shared hosting. It has the menu with today's special at the top, catering packages, table reservations, a customer survey, a page that publishes what customers said (good and bad), a gallery, and an unlisted menu board sized for the 1920×1080 TV in the dining room. GitHub Actions builds and uploads it on every push to `main`. Work happens on a `dev` branch first.
+[lvcafetogo.com](https://lvcafetogo.com) is built with Eleventy 3 and Nunjucks and served as static files from Apache shared hosting. It has the menu with today's special at the top, catering packages, a customer survey, a page that publishes what customers said (good and bad), a gallery, and an unlisted menu board sized for the 1920×1080 TV in the dining room. GitHub Actions builds and uploads it on every push to `main`. Work happens on a `dev` branch first.
 
 The customers skew older, so the type is large, the wording is plain, and the phone number is never far away.
 
-Reservations post to a Google Apps Script that keeps a Google Sheet, emails the cafe and the customer, and passes the request to the kitchen PC.
+Table reservations post to a Google Apps Script that keeps a Google Sheet, emails the cafe and the customer, and passes the request to the kitchen PC. They're off the site for now: there isn't enough parking.
 
 ## Menus, signs, and posts from one set of data
 
@@ -83,7 +83,7 @@ I trained the staff on the POS and the board, and wrote the counter's daily rout
 
 I also run the cafe's Facebook page. The day's special goes to the Facebook Story every service day, and Photo post, a tool on the kitchen PC's front page, makes that a one-minute job: take a photo on the phone, and it already knows the special, draws the branded picture with the hours and phone number, and writes the caption. Questions and comments come in at all hours. Every reply is public, so each one is written for everyone reading.
 
-On the catering side I help Dalton, who runs the cafe's event catering. His guide became data that prints the folded catering menu he hands out, and the website has a catering request form. Next is a catering calendar the owners keep in their own Google Calendar, so the website can show which days are open.
+On the catering side I help Dalton, who runs the cafe's event catering. His guide became data that prints the folded catering menu he hands out and a plain two-page version he emails, and the website has a catering request form. Next is a catering calendar the owners keep in their own Google Calendar, so the website can show which days are open.
 
 ## Results and lessons
 
